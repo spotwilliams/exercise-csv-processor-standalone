@@ -56,6 +56,9 @@
                     <li class=""><a href="/dashboard">Dashboard</a></li>
                     <li class=""><a href="/column">Add new column</a></li>
                 </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li class="active"><a href="/logout" class="pull-right">Logout</a></li>
+                </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>

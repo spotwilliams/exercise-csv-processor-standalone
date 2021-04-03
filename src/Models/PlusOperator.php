@@ -4,8 +4,6 @@ namespace FileProcessor\Models;
 
 class PlusOperator extends Operator
 {
-
-
     public function canOperateWith(Argument $argument): bool
     {
         return $this->isArithmetic($argument);

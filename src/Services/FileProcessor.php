@@ -8,8 +8,6 @@ use FileProcessor\Repositories\ProductWriteRepository;
 
 class FileProcessor
 {
-    const SEPARATOR = ',';
-
     private ProductWriteRepository $productWriteRepository;
 
     public function __construct(ProductWriteRepository $productWriteRepository)
@@ -28,7 +26,8 @@ class FileProcessor
                     $line[0],
                     $line[1],
                     (int) $line[2],
-                    (float) $line[3]
+                    (float) $line[3],
+                    (int) $line[4]
                 )
             );
         }

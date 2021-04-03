@@ -10,13 +10,17 @@ class UploadFileController extends Controller
         $uploaddir = __DIR__ . '/../../var/';
         $uploadfile = $uploaddir . basename($_FILES['csv']['name']);
 
-        if (move_uploaded_file($_FILES['csv']['tmp_name'], $uploadfile)) {
-            $fileProcessor->loadFile($uploadfile);
+        try {
+            if (move_uploaded_file($_FILES['csv']['tmp_name'], $uploadfile)) {
+                $fileProcessor->loadFile($uploadfile);
 
-            return $this->render(['success' => 'File successfully loaded']);
+                return $this->render(['success' => 'File successfully loaded']);
 
-        } else {
-            return $this->render(['error' => 'File could not be loaded']);
+            } else {
+                return $this->render(['error' => 'File could not be loaded']);
+            }
+        } catch (\Exception $e) {
+            return $this->render(['error' => $e->getMessage()]);
         }
     }
 

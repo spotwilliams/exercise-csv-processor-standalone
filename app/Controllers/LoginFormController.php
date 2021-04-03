@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class IndexController extends Controller
+class LoginFormController extends Controller
 {
     public function __invoke()
     {
@@ -11,6 +11,6 @@ class IndexController extends Controller
 
     public function viewName(): string
     {
-        return 'upload-file';
+        return 'login';
     }
 }

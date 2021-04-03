@@ -55,8 +55,8 @@ class Formula
 
     private function assertName(): bool
     {
-        if (strrpos($this->name, ' ') !== false or $this->name === '') {
-            throw new \InvalidArgumentException("The name of the rule must not have whitespaces nor empty");
+        if (strrpos($this->name, ' ') !== false or $this->name === '' or preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $this->name)) {
+            throw new \InvalidArgumentException("The name of the rule must not have whitespaces nor empty nor have special chars");
         }
         return true;
     }

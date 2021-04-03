@@ -25,34 +25,6 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <script src="./assets/ie-emulation-modes-warning.js"></script>
-    <script data-dapp-detection="">!function () {
-            let e = !1;
-
-            function n() {
-                if (!e) {
-                    const n = document.createElement("meta");
-                    n.name = "dapp-detected", document.head.appendChild(n), e = !0
-                }
-            }
-
-            if (window.hasOwnProperty("ethereum")) {
-                if (window.__disableDappDetectionInsertion = !0, void 0 === window.ethereum) return;
-                n()
-            } else {
-                var t = window.ethereum;
-                Object.defineProperty(window, "ethereum", {
-                    configurable: !0, enumerable: !1, set: function (e) {
-                        window.__disableDappDetectionInsertion || n(), t = e
-                    }, get: function () {
-                        if (!window.__disableDappDetectionInsertion) {
-                            const e = arguments.callee;
-                            e && e.caller && e.caller.toString && -1 !== e.caller.toString().indexOf("getOwnPropertyNames") || n()
-                        }
-                        return t
-                    }
-                })
-            }
-        }();</script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -78,27 +50,9 @@
                 </button>
                 <a class="navbar-brand" href="">Exercise</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="/index">Upload Csv File</a></li>
-                    <li class=""><a href="/dashboard">Dashboard</a></li>
-                    <li class=""><a href="/column">Add new column</a></li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li class="active"><a href="/logout" class="pull-right">Logout</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
 
-    <?php
-    if (isset($success)) {
-        ?>
-        <div class="alert alert-success" role="alert">
-            <?php echo $success; ?>
-        </div>
-    <?php }
-    ?>
 
     <?php
     if (isset($error)) {
@@ -111,18 +65,16 @@
 
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-
-            <h1>Upload csv file</h1>
-            <p>Please, upload a CSV file in order to populate the dashboard.</p>
-            <p>
-                <input type="file"
-                       id="file" name="csv"
-                       accept="text/csv">
-
-            </p>
-
-            <button type="submit" class="btn btn-primary">Upload</button>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
@@ -137,7 +89,16 @@
 <script src="./assets/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="./assets/ie10-viewport-bug-workaround.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "paging":   false,
+            "ordering": false,
+            "info":     false
+        });
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 
-
-</body>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 </html>

@@ -56,6 +56,9 @@
                     <li class=""><a href="/dashboard">Dashboard</a></li>
                     <li class=""><a href="/column">Add new column</a></li>
                 </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li class="active"><a href="/logout" class="pull-right">Logout</a></li>
+                </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
@@ -117,7 +120,11 @@
 <script src="./assets/ie10-viewport-bug-workaround.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#table').DataTable();
+        $('#table').DataTable({
+            "paging":   false,
+            "ordering": false,
+            "info":     false
+        });
     });
 </script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">

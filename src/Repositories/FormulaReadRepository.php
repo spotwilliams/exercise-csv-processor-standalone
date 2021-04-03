@@ -10,12 +10,16 @@ class FormulaReadRepository extends DatabaseRepository
 {
     public function all(): array
     {
-        $query = "SELECT * FROM {$this->tableName()}";
-        $statement = $this->database->prepare($query);
 
-        $statement->execute();
-
-        return $this->parse($statement->fetchAll());
+        try {
+            $query = "SELECT * FROM {$this->tableName()} where user_id = :user";
+            $statement = $this->database->prepare($query);
+            $statement->bindValue('user', $this->currentUserFilter);
+            $statement->execute();
+            return $this->parse($statement->fetchAll());
+        } catch (\Exception $e) {
+            throw new \Exception('Could not take custom columns', 500, $e);
+        }
 
     }
 

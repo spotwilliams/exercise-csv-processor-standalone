@@ -1,12 +1,14 @@
 <?php
-define('WEBROOT', str_replace("Webroot/index.php", "", $_SERVER["SCRIPT_NAME"]));
-define('ROOT', str_replace("Webroot/index.php", "", $_SERVER["SCRIPT_FILENAME"]));
+session_start();
 
 require __DIR__ . '/../autoload.php';
+require __DIR__ . '/../secure.php';
 require __DIR__ . '/../app.php';
+require __DIR__ . '/../config.php';
 
 $app = new App();
+$secure = new Secure();
 
-echo $app->execute();
+echo $secure->secureApp($app);
 
 ?>

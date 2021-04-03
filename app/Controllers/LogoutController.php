@@ -1,16 +1,19 @@
 <?php
 
+
 namespace App\Controllers;
 
-class IndexController extends Controller
+class LogoutController extends Controller
 {
     public function __invoke()
     {
+        session_unset();
+        session_destroy();
         return $this->render();
     }
 
     public function viewName(): string
     {
-        return 'upload-file';
+        return 'login';
     }
 }

@@ -9,6 +9,30 @@ class App
         $this->routes = [
             [
                 'method' => 'GET',
+                'url' => '/logout',
+                'controller' => function () {
+                    return (new \App\Controllers\LogoutController())->__invoke();
+                },
+            ],
+            [
+                'method' => 'GET',
+                'url' => '/login',
+                'controller' => function () {
+                    return (new \App\Controllers\LoginFormController())->__invoke();
+                },
+            ],
+            [
+                'method' => 'POST',
+                'url' => '/login',
+                'controller' => function () {
+                    return (new \App\Controllers\LoginController())->__invoke(
+                        new \FileProcessor\Repositories\UserReadRepository(),
+                        $_POST
+                    );
+                },
+            ],
+            [
+                'method' => 'GET',
                 'url' => '/index',
                 'controller' => function () {
                     return (new \App\Controllers\IndexController())->__invoke();
