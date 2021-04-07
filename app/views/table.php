@@ -98,7 +98,11 @@
             foreach ($products as $product) {
                 echo "<tr>";
                 foreach ($product as $field) {
-                    echo "<td>{$field}</td>";
+                    if($field == null) {
+                        echo "<td>N/A</td>";
+                    } else {
+                        echo "<td>{$field}</td>";
+                    }
                 }
                 echo "</tr>";
             }

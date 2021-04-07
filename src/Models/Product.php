@@ -15,7 +15,7 @@ class Product
         $this->city = $city;
         $this->name = $name;
         $this->units = $units;
-        $this->price = $price * 100;
+        $this->price = $price;
         $this->sales = $sales;
     }
 
